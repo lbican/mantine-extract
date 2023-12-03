@@ -1,5 +1,5 @@
 import "@mantine/core/styles.css";
-import React from "react";
+import React, {PropsWithChildren} from "react";
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import { theme } from "../theme";
 
@@ -8,7 +8,7 @@ export const metadata = {
   description: "I am using Mantine with Next.js!",
 };
 
-export default function RootLayout({ children }: { children: any }) {
+const RootLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
       <head>
@@ -18,6 +18,7 @@ export default function RootLayout({ children }: { children: any }) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
+          <title>Mantine!</title>
       </head>
       <body>
         <MantineProvider theme={theme}>{children}</MantineProvider>
@@ -25,3 +26,5 @@ export default function RootLayout({ children }: { children: any }) {
     </html>
   );
 }
+
+export default RootLayout;
